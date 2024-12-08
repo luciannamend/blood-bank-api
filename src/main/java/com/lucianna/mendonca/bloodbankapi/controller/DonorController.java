@@ -14,6 +14,7 @@ import java.util.Optional;
 
 @RestController()
 @RequestMapping(value = "/api/donors")
+@CrossOrigin(origins = "http://localhost:5173") // Allow requests from your React app
 public class DonorController {
 
     @Autowired
@@ -37,12 +38,6 @@ public class DonorController {
         }
         return ResponseEntity.of(donorRepository.findById(donorId));
     }
-
-//    // GET HISTORY
-//    @GetMapping("/{donorId}/history")
-//    public List<BloodStock> getDonorHistory(@PathVariable Long donorId) {
-//        return donorService.getDonorHistory(donorId); // rtn all stocks stored with donor id
-//    }
 
     // CREATE
     @PostMapping()

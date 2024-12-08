@@ -18,6 +18,7 @@ public class BloodBankApiApplication {
 
     }
 
+    /*
     @Bean
     public CommandLineRunner testBloodStock(BloodStockService bloodStockService, DonorService donorService) {
         return args -> {
@@ -35,12 +36,12 @@ public class BloodBankApiApplication {
             // test the getDonorHistory()
             Long donorId = 2L;
             List<BloodStock> donorsStocks = donorService.getDonorHistory(donorId);
-            System.out.println("Donor id: "+ donorId + "\nAvailable stocks:");
+            System.out.println("Donor id: "+ donorId + "\n stocks:");
             for (BloodStock stock:donorsStocks){
                 System.out.println(stock.toString());
 
             }
         };
-    }
+    }*/
 
 }

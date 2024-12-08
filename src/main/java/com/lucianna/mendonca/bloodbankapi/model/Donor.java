@@ -66,7 +66,7 @@ public class Donor {
     //PHONE NUMBER
     @NotBlank(message = "Phone number cannot be blank")
     @Pattern(
-            regexp = "^\\+?[0-9. ()-]{7,20}$",
+            regexp = "^\\+?[1-9][0-9 .()-]{6,19}$",
             message = "Phone number is invalid"
     ) // Matches common phone number formats
     @Column(name = "phone_number", nullable = false, columnDefinition = "VARCHAR(20)", length = 20)

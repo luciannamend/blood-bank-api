@@ -12,6 +12,7 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/blood-bank") //base url
+@CrossOrigin(origins = "http://localhost:5173") // Allow requests from your React app
 public class BloodBankController {
 
     @Autowired
