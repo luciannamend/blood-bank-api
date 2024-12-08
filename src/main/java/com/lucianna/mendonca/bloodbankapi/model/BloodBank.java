@@ -64,9 +64,4 @@ public class BloodBank {
     @Email(message = "Email format is invalid") //validates email format
     @Column(name = "email", nullable = false)
     private String email;
-
-    // LIST OF BLOODSTOCK
-    @OneToMany(mappedBy = "bloodBank")
-    private List<BloodStock> bloodStocks; // A BloodBank stores multiple blood donations
-
 }

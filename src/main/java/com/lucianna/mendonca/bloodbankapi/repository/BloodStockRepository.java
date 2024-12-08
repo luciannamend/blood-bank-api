@@ -10,6 +10,5 @@ import java.util.List;
 @Repository
 public interface BloodStockRepository extends JpaRepository<BloodStock, Long> {
 
-    List<BloodStock> findByDonor(Donor donor);
-
+    Object findByStatus(String available);
 }

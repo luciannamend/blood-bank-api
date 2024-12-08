@@ -2,6 +2,7 @@ package com.lucianna.mendonca.bloodbankapi.controller;
 
 import com.lucianna.mendonca.bloodbankapi.model.BloodStock;
 import com.lucianna.mendonca.bloodbankapi.repository.BloodStockRepository;
+import com.lucianna.mendonca.bloodbankapi.service.BloodStockService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -16,6 +17,7 @@ public class BloodStockController {
 
     @Autowired
     private BloodStockRepository bloodStockRepository;
+    BloodStockService stockService;
 
     // GET ALL
     @GetMapping

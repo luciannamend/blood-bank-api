@@ -23,24 +23,9 @@ public class DonorController {
     private DonorService donorService;
 
     // GET ALL
-//    @GetMapping
-//    public ResponseEntity<List<Donor>> getAllDonors(){
-//        return ResponseEntity.of(Optional.of(donorRepository.findAll()));
-//    }
-
-    // GET ALL
     @GetMapping
-    public List<Donor> getAllDonors(){
-
-
-        List<Donor> donors = donorRepository.findAll();
-
-        for(Donor donor : donors){
-
-            System.out.println("DONOR FOUND " + donor.getFirstName());
-        }
-
-        return donorRepository.findAll();
+    public ResponseEntity<List<Donor>> getAllDonors(){
+        return ResponseEntity.of(Optional.of(donorRepository.findAll()));
     }
 
     // GET BY ID
@@ -53,11 +38,11 @@ public class DonorController {
         return ResponseEntity.of(donorRepository.findById(donorId));
     }
 
-    // GET HISTORY
-    @GetMapping("/{donorId}/history")
-    public List<BloodStock> getDonorHistory(@PathVariable Long donorId) {
-        return donorService.getDonorHistory(donorId); // rtn all stocks stored with donor id
-    }
+//    // GET HISTORY
+//    @GetMapping("/{donorId}/history")
+//    public List<BloodStock> getDonorHistory(@PathVariable Long donorId) {
+//        return donorService.getDonorHistory(donorId); // rtn all stocks stored with donor id
+//    }
 
     // CREATE
     @PostMapping()
