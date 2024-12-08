@@ -38,6 +38,7 @@ public class BloodBankApiApplication {
             System.out.println("Donor id: "+ donorId + "\nAvailable stocks:");
             for (BloodStock stock:donorsStocks){
                 System.out.println(stock.toString());
+
             }
         };
     }
