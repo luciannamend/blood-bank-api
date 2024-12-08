@@ -21,15 +21,15 @@ public class BloodStock {
     @Column(name = "blood_stock_id")
     private Long bloodStockId;
 
-    // DONOR
-    @ManyToOne
-    @JoinColumn(name = "donor_id", nullable = false)
-    private Donor donor; // A BloodStock belongs to one Donor
+    // DONOR ID
+    @NotNull(message = "Donor id cannot be null")
+    @Column(name = "donor_id", nullable = false)
+    private Long donorId;
 
-    // BLOOD BANK DESTINATION
-    @ManyToOne
-    @JoinColumn(name = "blood_bank_id", nullable = false)
-    private BloodBank bloodBank; // A BloodStock belongs to one BloodBank
+    // BLOOD BANK ID
+    @NotNull(message = "Blood bank id cannot be null")
+    @Column(name = "blood_bank_id", nullable = false)
+    private Long bloodBankId;
 
     // BLOOD GROUP
     @NotNull(message = "Blood group cannot be null")
