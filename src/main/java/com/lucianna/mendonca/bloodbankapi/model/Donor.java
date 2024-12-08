@@ -75,4 +75,5 @@ public class Donor {
     // LIST OF BLOOD STOCK (DONATIONS)
     @OneToMany(mappedBy = "donor")
     private List<BloodStock> bloodStocks; // A Donor can have multiple blood donations
+
 }
