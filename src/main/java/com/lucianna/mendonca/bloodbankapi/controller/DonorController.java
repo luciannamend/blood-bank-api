@@ -74,4 +74,28 @@ public class DonorController {
 
         return ResponseEntity.status(HttpStatus.OK).build();
     }
+
+    // LOGIN
+    @PostMapping("/login")
+    public ResponseEntity<Donor> login(@RequestBody Donor loginDonor) {
+        Optional<Donor> donor = donorRepository.findByEmail(loginDonor.getEmail());
+
+        if (donor.isPresent()) {
+            // Check if the password matches (you might want to hash the password)
+            if (donor.get().getPassword().equals(loginDonor.getPassword())) {
+                return ResponseEntity.ok(donor.get());  // Successful login
+            } else {
+                return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(null);  // Incorrect password
+            }
+        } else {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);  // Email not found
+        }
+    }
+
+    // HISTORY
+    @GetMapping("/history/{donorId}")
+    public ResponseEntity<List<BloodStock>> getDonorHistory(@PathVariable Long donorId){
+        return ResponseEntity.status(HttpStatus.OK).body(donorService.getDonorHistory(donorId));
+    }
+
 }

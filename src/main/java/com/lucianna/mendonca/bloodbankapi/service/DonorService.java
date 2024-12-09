@@ -19,13 +19,13 @@ public class DonorService {
     private BloodStockRepository bloodStockRepository;
 
     public List<BloodStock> getDonorHistory(Long donorId) {
-        List<BloodStock> stocks = bloodStockRepository.findAll(); // busca todos os estoques
+        List<BloodStock> stocks = bloodStockRepository.findAll();
         List<BloodStock> donorsStocks = new ArrayList<>();
 
-        for(BloodStock stock : stocks){ // para cada estoque
+        for(BloodStock stock : stocks){
 
-            if (stock.getDonorId() == donorId){ // se a id do donor do estoque for igual a id da busca
-                donorsStocks.add(stock); // adiciona o estoque na lista de estoques do donor em busca
+            if (donorId != null && donorId.equals(stock.getDonorId())) {
+                donorsStocks.add(stock);
             }
         }
         return donorsStocks;

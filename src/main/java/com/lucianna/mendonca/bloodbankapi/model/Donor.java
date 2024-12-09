@@ -72,5 +72,15 @@ public class Donor {
     @Column(name = "phone_number", nullable = false, columnDefinition = "VARCHAR(20)", length = 20)
     private String phoneNumber;
 
+    // ------- LOGIN CREDENTIALS -------- //
+    //EMAIL
+    @NotBlank(message = "Email cannot be blank")
+    @Email(message = "Email format is invalid") //validates email format
+    @Column(name = "email", nullable = false, unique = true)
+    private String email;
 
+    // PASSWORD
+    @NotBlank(message = "Password cannot be blank")
+    @Column(name = "password", nullable = false)
+    private String password;
 }
