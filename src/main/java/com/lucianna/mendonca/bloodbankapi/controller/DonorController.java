@@ -14,7 +14,7 @@ import java.util.Optional;
 
 @RestController()
 @RequestMapping(value = "/api/donors")
-@CrossOrigin(origins = "http://localhost:5173") // Allow requests from your React app
+@CrossOrigin(origins = "http://localhost:5173") // Allow requests from web app
 public class DonorController {
 
     @Autowired
@@ -23,13 +23,13 @@ public class DonorController {
     @Autowired
     private DonorService donorService;
 
-    // GET ALL
+    // GET ALL DONORS
     @GetMapping
     public ResponseEntity<List<Donor>> getAllDonors(){
         return ResponseEntity.of(Optional.of(donorRepository.findAll()));
     }
 
-    // GET BY ID
+    // GET DONOR BY ID
     @GetMapping("/{donorId}")
     public ResponseEntity<Donor> getDonor(@PathVariable Long donorId){
         if(donorId == null){
@@ -39,7 +39,7 @@ public class DonorController {
         return ResponseEntity.of(donorRepository.findById(donorId));
     }
 
-    // CREATE
+    // CREATE NEW DONOR
     @PostMapping()
     public ResponseEntity<Donor> createDonor(@RequestBody Donor donor){
         if(donor == null){
@@ -49,7 +49,7 @@ public class DonorController {
         return ResponseEntity.status(HttpStatus.CREATED).body(donorRepository.save(donor));
     }
 
-    // UPDATE
+    // UPDATE DONOR BY ID
     @PutMapping("/{donorId}")
     public ResponseEntity<Donor> updateDonor(@PathVariable Long donorId, @RequestBody Donor donor){
         if(donorId == null){
@@ -59,7 +59,7 @@ public class DonorController {
         return ResponseEntity.status(HttpStatus.CREATED).body(donorRepository.save(donor));
     }
 
-    // DELETE BY ID
+    // DELETE DONOR BY ID
     @DeleteMapping("/{donorId}")
     public ResponseEntity<Donor> deleteDonor(@PathVariable Long donorId){
 
@@ -75,7 +75,7 @@ public class DonorController {
         return ResponseEntity.status(HttpStatus.OK).build();
     }
 
-    // LOGIN
+    // DONOR LOGIN
     @PostMapping("/login")
     public ResponseEntity<Donor> login(@RequestBody Donor loginDonor) {
         Optional<Donor> donor = donorRepository.findByEmail(loginDonor.getEmail());
@@ -92,7 +92,7 @@ public class DonorController {
         }
     }
 
-    // HISTORY
+    // DONOR'S HISTORY
     @GetMapping("/history/{donorId}")
     public ResponseEntity<List<BloodStock>> getDonorHistory(@PathVariable Long donorId){
         return ResponseEntity.status(HttpStatus.OK).body(donorService.getDonorHistory(donorId));
