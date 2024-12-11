@@ -13,20 +13,20 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/blood-stock")
-@CrossOrigin(origins = "http://localhost:5173") // Allow requests from your React app
+@CrossOrigin(origins = "http://localhost:5173") // Allow requests from web app
 public class BloodStockController {
 
     @Autowired
     private BloodStockRepository bloodStockRepository;
     BloodStockService stockService;
 
-    // GET ALL
+    // GET ALL BLOOD STOCKS
     @GetMapping
     public ResponseEntity<List<BloodStock>> getAllBloodStocks(){
         return ResponseEntity.of(Optional.of(bloodStockRepository.findAll()));
     }
 
-    // GET BY ID
+    // GET BLOOD STOCK BY ID
     @GetMapping("/{bloodStockId}")
     public ResponseEntity<BloodStock> getBloodStock(@PathVariable Long bloodStockId){
         if(bloodStockId == null){
@@ -36,7 +36,7 @@ public class BloodStockController {
         return ResponseEntity.of(bloodStockRepository.findById(bloodStockId));
     }
 
-    // CREATE
+    // CREATE NEW BLOOD STOCK
     @PostMapping()
     public ResponseEntity<BloodStock> createBloodStock(@RequestBody BloodStock bloodStock){
         if(bloodStock == null){
@@ -46,7 +46,7 @@ public class BloodStockController {
         return ResponseEntity.status(HttpStatus.CREATED).body(bloodStockRepository.save(bloodStock));
     }
 
-    // UPDATE
+    // UPDATE BLOOD STOCK BY ID
     @PutMapping("/{bloodStockId}")
     public ResponseEntity<BloodStock> updateBloodStock(@PathVariable Long bloodStockId,
                                                        @RequestBody BloodStock bloodStock){
@@ -57,7 +57,7 @@ public class BloodStockController {
         return ResponseEntity.status(HttpStatus.CREATED).body(bloodStockRepository.save(bloodStock));
     }
 
-    // DELETE BY ID
+    // DELETE BLOOD STOCK BY ID
     @DeleteMapping("/{bloodStockId}")
     public ResponseEntity<BloodStock> deleteBloodStock(@PathVariable Long bloodStockId){
 
