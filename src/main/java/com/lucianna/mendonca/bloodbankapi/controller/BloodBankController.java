@@ -12,19 +12,19 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/blood-bank") //base url
-@CrossOrigin(origins = "http://localhost:5173") // Allow requests from your React app
+@CrossOrigin(origins = "http://localhost:5173") // Allow requests from web app
 public class BloodBankController {
 
     @Autowired
     private BloodBankRepository bloodBankRepository;
 
-    // GET ALL
+    // GET ALL BLOOD BANKS
     @GetMapping
     public ResponseEntity<List<BloodBank>> getAllBanks(){
         return ResponseEntity.of(Optional.of(bloodBankRepository.findAll()));
     }
 
-    // GET BY ID
+    // GET BLOOD BANK BY ID
     @GetMapping("/{bloodBankId}")
     public ResponseEntity<BloodBank> getBloodBank(@PathVariable Long bloodBankId){
         if(bloodBankId == null){
@@ -34,7 +34,7 @@ public class BloodBankController {
         return ResponseEntity.of(bloodBankRepository.findById(bloodBankId));
     }
 
-    // CREATE
+    // CREATE NEW BLOOD BANK
     @PostMapping()
     public ResponseEntity<BloodBank> createBloodBank(@RequestBody BloodBank bloodBank){
         if(bloodBank == null){
@@ -44,7 +44,7 @@ public class BloodBankController {
         return ResponseEntity.status(HttpStatus.CREATED).body(bloodBankRepository.save(bloodBank));
     }
 
-    // UPDATE
+    // UPDATE BLOOD BANK BY ID
     @PutMapping("/{bloodBankId}")
     public ResponseEntity<BloodBank> updateBloodBank(@PathVariable Long bloodBankId, @RequestBody BloodBank bloodBank){
         if(bloodBankId == null){
@@ -54,7 +54,7 @@ public class BloodBankController {
         return ResponseEntity.status(HttpStatus.CREATED).body(bloodBankRepository.save(bloodBank));
     }
 
-    // DELETE BY ID
+    // DELETE BLOOD BANK BY ID
     @DeleteMapping("/{bloodBankId}")
     public ResponseEntity<BloodBank> deleteBloodBank(@PathVariable Long bloodBankId){
 
